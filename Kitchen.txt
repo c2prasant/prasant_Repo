@@ -3,4 +3,8 @@ welcome to Git
 
 Spark 
 Scala
-HDFS
+
+
+Hadoop
+Oozie
+Airflow
