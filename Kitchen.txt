@@ -9,5 +9,11 @@ Hadoop
 Oozie
 Airflow
 
+
+
+Azure
+Databricks
+
 ----
 aws , redshift
+
