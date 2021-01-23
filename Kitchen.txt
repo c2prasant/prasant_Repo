@@ -8,3 +8,6 @@ Scala
 Hadoop
 Oozie
 Airflow
+
+----
+aws , redshift
