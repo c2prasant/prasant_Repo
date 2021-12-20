@@ -1,0 +1,66 @@
+create_namespace 'training'
+
+hbase(main):021:0> create_namespace 'training'
+0 row(s) in 0.4640 seconds
+
+
+list_namesapce
+*****************
+hbase(main):025:0> list_namespace
+NAMESPACE                                                                                                                                                                                            
+default                                                                                                                                                                                              
+hbase                                                                                                                                                                                                
+training                                                                                                                                                                                             
+3 row(s) in 0.0400 seconds
+
+hbase(main):026:0> create 'training:demo','cf1'
+0 row(s) in 1.5590 seconds
+
+=> Hbase::Table - training:demo
+hbase(main):027:0> list
+TABLE                                                                                                                                                                                                
+training:demo                                                                                                                                                                                        
+1 row(s) in 0.0210 seconds
+
+
+put 'training:demo',1,'cf1:c1','v1'
+
+hbase(main):029:0> put 'training:demo',1,'cf1:c1','v1'
+0 row(s) in 1.1210 seconds
+
+hbase(main):030:0> scan 'training:demo'
+ROW                                                COLUMN+CELL                                                                                                                                       
+ 1                                                 column=cf1:c1, timestamp=1589714676163, value=v1      
+ 
+ 
+ put 'training:demo',1,'cf1:c2','v2'
+ put 'training:demo',1,'cf1:c3','v3'
+ put 'training:demo',1,'cf1:c4','v4'
+ 
+ hbase(main):039:0> scan 'training:demo'
+ROW                                                COLUMN+CELL                                                                                                                                       
+ 1                                                 column=cf1:c1, timestamp=1589714849848, value=v1                                                                                                  
+ 1                                                 column=cf1:c2, timestamp=1589714826566, value=v2                                                                                                  
+ 1                                                 column=cf1:c3, timestamp=1589714796550, value=v3                                                                                                  
+ 1                                                 column=cf1:c4, timestamp=1589714843929, value=v4                                                                                                  
+1 row(s) in 0.0840 seconds
+
+hbase(main):040:0> put 'training:demo',2,'cf1:y1','yv1'
+0 row(s) in 0.0240 seconds
+
+hbase(main):041:0> put 'training:demo',3,'cf1:x1','xv1'
+0 row(s) in 0.0210 seconds
+
+hbase(main):042:0> put 'training:demo',3,'cf1:x2','xv2'
+0 row(s) in 0.0100 seconds
+
+hbase(main):043:0> scan 'training:demo'
+ROW                                                COLUMN+CELL                                                                                                                                       
+ 1                                                 column=cf1:c1, timestamp=1589714849848, value=v1                                                                                                  
+ 1                                                 column=cf1:c2, timestamp=1589714826566, value=v2                                                                                                  
+ 1                                                 column=cf1:c3, timestamp=1589714796550, value=v3                                                                                                  
+ 1                                                 column=cf1:c4, timestamp=1589714843929, value=v4                                                                                                  
+ 2                                                 column=cf1:y1, timestamp=1589714997868, value=yv1                                                                                                 
+ 3                                                 column=cf1:x1, timestamp=1589715014438, value=xv1                                                                                                 
+ 3                                                 column=cf1:x2, timestamp=1589715028268, value=xv2                                                                                                 
+3 row(s) in 0.0910 seconds
